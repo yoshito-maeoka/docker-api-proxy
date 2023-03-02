@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  api-proxy:
+    container_name: your-api-proxy
+    build:
+      context: ./nginx
+    ports:
+      - 2020:80
+    environment:
+      API_URL: "${API_URL}" 
+      AUTH_HEADER: "${AUTH_HEADER}" 
+    networks:
+      dba-nuxt-strapi: {}
+
+networks:
+  dba-nuxt-strapi: {}
